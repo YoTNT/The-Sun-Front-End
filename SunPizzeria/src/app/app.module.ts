@@ -10,6 +10,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { UserRoleComponent } from './components/user-role/user-role.component';
 import { UserComponent } from './components/user/user.component';
 import { ToppingComponent } from './components/topping/topping.component';
+import { CurrencyPipe } from './pipes/currency.pipe';
+import { TimestampPipe } from './pipes/timestamp.pipe';
  
  
  
@@ -24,6 +26,8 @@ import { ToppingComponent } from './components/topping/topping.component';
     UserRoleComponent,
     UserComponent,
     ToppingComponent,
+    CurrencyPipe,
+    TimestampPipe,
  
  
   ],
