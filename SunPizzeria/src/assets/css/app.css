@@ -1,3 +1,4 @@
+ 
 .modal {
     display: none;
     /* Hidden by default */
@@ -57,4 +58,5 @@
     color: #f44336;
     text-decoration: none;
     cursor: pointer;
+ 
 }

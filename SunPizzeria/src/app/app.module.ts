@@ -12,8 +12,10 @@ import { UserComponent } from './components/user/user.component';
 import { ToppingComponent } from './components/topping/topping.component';
 import { CurrencyPipe } from './pipes/currency.pipe';
 import { TimestampPipe } from './pipes/timestamp.pipe';
- 
- 
+import {APP_BASE_HREF} from '@angular/common';
+import { GalleryComponent } from './components/gallery/gallery.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component';
  
 
 @NgModule({
@@ -28,6 +30,9 @@ import { TimestampPipe } from './pipes/timestamp.pipe';
     ToppingComponent,
     CurrencyPipe,
     TimestampPipe,
+    GalleryComponent,
+    AboutComponent,
+    ContactComponent,
  
  
   ],
@@ -35,7 +40,7 @@ import { TimestampPipe } from './pipes/timestamp.pipe';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [{provide: APP_BASE_HREF, useValue: ''}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
