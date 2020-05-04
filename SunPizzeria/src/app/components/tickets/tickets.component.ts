@@ -7,9 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TicketsComponent implements OnInit {
 
+  //tickets:Ticket[];
   constructor() { }
 
   ngOnInit(): void {
   }
-
+ 
 }
