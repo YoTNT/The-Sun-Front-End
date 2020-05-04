@@ -7,6 +7,9 @@ import { TicketsComponent } from './components/tickets/tickets.component';
 import { PizzaComponent } from './components/pizza/pizza.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { UserRoleComponent } from './components/user-role/user-role.component';
+import { UserComponent } from './components/user/user.component';
+import { ToppingComponent } from './components/topping/topping.component';
  
  
  
@@ -18,6 +21,9 @@ import { RegisterComponent } from './components/register/register.component';
     PizzaComponent,
     LoginComponent,
     RegisterComponent,
+    UserRoleComponent,
+    UserComponent,
+    ToppingComponent,
  
  
   ],
