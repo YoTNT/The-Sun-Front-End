@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +18,8 @@ import {APP_BASE_HREF} from '@angular/common';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { CustomerComponent } from './components/customer/customer.component';
+import { EmployeeComponent } from './components/employee/employee.component';
  
 
 @NgModule({
@@ -33,12 +37,16 @@ import { ContactComponent } from './components/contact/contact.component';
     GalleryComponent,
     AboutComponent,
     ContactComponent,
- 
+    CustomerComponent,
+    EmployeeComponent
+
  
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [{provide: APP_BASE_HREF, useValue: ''}],
   bootstrap: [AppComponent]
