@@ -10,6 +10,5 @@ export class AppComponent {
   constructor()
   {
     this.title="The Sun Pizzeria"
-    console.log(12);
   }
 }
