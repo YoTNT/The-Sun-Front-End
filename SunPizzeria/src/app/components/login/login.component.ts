@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service'
 import { User } from 'src/app/models/User';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { User } from 'src/app/models/User';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private userservice:UserService) { } //TODO put private userservice:UserService
+  constructor(private userservice:UserService, private router:Router) { } //TODO put private userservice:UserService
 
   user:User;
   username:string;
@@ -20,14 +21,28 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  redirectToCustomer(){
+    this.router.navigate(['customer']);
+  }
+
+  redirectToEmployee(){
+    this.router.navigate(['employee']);
+  }
+
   async login():Promise<User>{
     this.user = await this.userservice.loginUser(this.username, this.password);
     console.log(this.user);
 
-    if(this.user.userRole.roleId == 6)
+    if(this.user.userRole.roleId == 6){
       console.log("Welcome back customer, " + this.user.userName);
-    if(this.user.userRole.roleId == 1)
+      this.userservice.userInfo = this.user;
+      this.redirectToCustomer();
+    }
+    if(this.user.userRole.roleId == 1){
       console.log("Welcome back employee, " + this.user.userName);
+      this.userservice.userInfo = this.user;
+      this.redirectToEmployee();
+    }
 
     return this.user;
   }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service'
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-employee',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeComponent implements OnInit {
 
-  constructor() { }
+  user:User;
+
+  constructor(private userservice:UserService) {
+    this.user = userservice.userInfo;
+  }
 
   ngOnInit(): void {
   }
