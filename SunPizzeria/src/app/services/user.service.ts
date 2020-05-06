@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { User } from '../models/User';
-import { HttpHeaders } from '@angular/common/http';   // From Angular website
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +8,8 @@ import { HttpHeaders } from '@angular/common/http';   // From Angular website
 export class UserService {
 
   constructor(private http:HttpClient) { }
+
+  userInfo:User;
 
   async loginUser(username:string, password:string):Promise<any>{
     let user:User = new User();
