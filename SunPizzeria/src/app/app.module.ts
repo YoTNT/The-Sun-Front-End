@@ -20,8 +20,8 @@ import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { EmployeeComponent } from './components/employee/employee.component';
- 
-
+ import { TicketdetailsComponent } from './components/ticketdetails/ticketdetails.component';
+import { TicketitemComponent } from './components/ticketitem/ticketitem.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +39,8 @@ import { EmployeeComponent } from './components/employee/employee.component';
     ContactComponent,
     CustomerComponent,
     EmployeeComponent
-
+    TicketitemComponent,
+    TicketdetailsComponent
  
   ],
   imports: [
