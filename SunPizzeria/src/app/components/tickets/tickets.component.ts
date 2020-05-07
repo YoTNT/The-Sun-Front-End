@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Ticket } from 'src/app/models/Ticket';
+import { TicketService } from 'src/app/services/ticket.service';
+
 
 @Component({
   selector: 'app-tickets',
@@ -7,10 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TicketsComponent implements OnInit {
 
-  //tickets:Ticket[];
-  constructor() { }
+  tickets:Array<Ticket>;
 
+  ticket: any;
+  constructor(private ticketServ: TicketService) { }
+  columns: string[][] = [];
+  
   ngOnInit(): void {
+    this.getUserTickets();
   }
- 
+  async getUserTickets(): Promise<Array<Ticket>> {
+    this.tickets = await this.ticketServ.registredUserTickets(3);
+   
+     return this.tickets;
+
+  }
 }
+
