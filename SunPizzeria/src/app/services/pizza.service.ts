@@ -11,8 +11,8 @@ export class PizzaService {
   constructor(private http:HttpClient) { }
 
   async createPizza(pizza:Pizza):Promise<any>{
-    let userPromise = await this.http.post("http://localhost:9000/pizzas", pizza).toPromise();
-    return userPromise;
+    let pizzaPromise = await this.http.post("http://localhost:9000/pizzas", pizza).toPromise();
+    return pizzaPromise;
   }
 
 

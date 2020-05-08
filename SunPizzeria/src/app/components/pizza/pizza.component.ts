@@ -140,9 +140,9 @@ export class PizzaComponent implements OnInit {
     let ticket: Ticket = new Ticket(0, user, "date", "Submitted", this.note);
     let ticketPromise: Ticket = await this.ticketService.createTicket(ticket);
     console.log(ticketPromise);
-    let createPizza: Pizza = new Pizza(0, ticketPromise);
+    let createPizza: Pizza = new Pizza(0, ticketPromise, this.toppingSelected);
     console.log(createPizza);
     let pizzaPromise: Pizza = await this.pizzaService.createPizza(createPizza);
-    console.log("Pizza promise " + pizzaPromise);
+    console.log(pizzaPromise);
   }
 }
