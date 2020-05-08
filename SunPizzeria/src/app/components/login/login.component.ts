@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserService } from 'src/app/services/user.service'
 import { User } from 'src/app/models/User';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,11 +10,16 @@ import { Router } from '@angular/router'
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private userservice:UserService, private router:Router) { } //TODO put private userservice:UserService
+  constructor(
+    private userservice:UserService, 
+    private router:Router,
+    ) { };
 
   user:User;
   username:string;
   password:string;
+
+  @Output() close: EventEmitter<any> = new EventEmitter(); 
 
   users:any;
 
@@ -37,6 +42,8 @@ export class LoginComponent implements OnInit {
       console.log("Welcome back customer, " + this.user.userName);
       this.userservice.userInfo = this.user;
       this.redirectToCustomer();
+
+      this.close.emit(null);
     }
     if(this.user.userRole.roleId == 1){
       console.log("Welcome back employee, " + this.user.userName);

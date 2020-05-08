@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { TicketitemComponent } from './components/ticketitem/ticketitem.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,7 @@ import { TicketitemComponent } from './components/ticketitem/ticketitem.componen
     AboutComponent,
     ContactComponent,
     CustomerComponent,
-    EmployeeComponent
+    EmployeeComponent,
     TicketitemComponent
  
   ],
@@ -46,6 +48,8 @@ import { TicketitemComponent } from './components/ticketitem/ticketitem.componen
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [{provide: APP_BASE_HREF, useValue: ''}],
   bootstrap: [AppComponent]
