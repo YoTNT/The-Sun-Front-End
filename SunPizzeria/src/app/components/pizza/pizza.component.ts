@@ -4,8 +4,7 @@ import { ToppingService } from 'src/app/services/topping.service';
 import { Topping } from 'src/app/models/Topping';
 import { FormArray } from '@angular/forms';
 import { FormControl } from '@angular/forms';
-import { FormBuilder } from '@angular/forms'
-import { DomSanitizer } from '@angular/platform-browser'
+import { FormBuilder } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { TicketService } from 'src/app/services/ticket.service';
 import { PizzaService } from 'src/app/services/pizza.service';
@@ -14,6 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Ticket } from 'src/app/models/Ticket';
 import { User } from 'src/app/models/User';
 import { Pizza } from 'src/app/models/Pizza';
+import { TimestampPipe } from 'src/app/pipes/timestamp.pipe';
 
 @Component({
   selector: 'app-pizza',
@@ -31,7 +31,9 @@ export class PizzaComponent implements OnInit {
 
   closeResult: string;
 
-  constructor(private modalService: NgbModal, private toppingService: ToppingService, private formBuilder: FormBuilder, private ticketService: TicketService, private pizzaService: PizzaService, private userService: UserService) { }
+  constructor(private modalService: NgbModal, private toppingService: ToppingService, 
+    private formBuilder: FormBuilder, private ticketService: TicketService, private pizzaService: PizzaService, 
+    private userService: UserService) { }
   // toppings:Array<Topping>;
   toppings: Array<Topping>;
   openVerticallyCentered(content) {
@@ -91,36 +93,15 @@ export class PizzaComponent implements OnInit {
     this.total();
   }
 
-  removePizza(i: number) {
-    this.subtotal =0;
 
-    this.pizzas.splice(i, 1);
-    console.log(this.pizzas);
-    if (this.pizzas.length > 0) {
-      this.total();
-    }
-    else {
-      this.subtotal = 0;
-      this.table = false;
-    }
-  }
 
   totalMoney: number;
   subtotal: number = 0;
   toppingCost: number;
   withTax = 0;
   total() {
-    let xtotal: number = 0;
-    let ysubtotal: number = 0;
     let ztoppingcost: number = 0;
-
-    for (let i = 0; i < this.pizzaprice.length; i++) {
-      if (this.pizzas[i].pizza === this.pizzaprice[i].name) {
-
-        this.subtotal += this.pizzaprice[i].price;
-      }
-    }
-    this.toppingCost = 0;
+    this.subtotal = this.pizzas.length * 9.99;
     for (let i = 0; i < this.pizzas.length; i++) {
       for (let k = 0; k < this.pizzas[i].topping.length; k++) {
         ztoppingcost += this.pizzas[i].topping[k].toppingCost;
@@ -132,17 +113,36 @@ export class PizzaComponent implements OnInit {
     this.toppingCost = ztoppingcost;
   }
 
+  
+  removePizza(i: number) {
+    
+    this.pizzas.splice(i, 1);
+    console.log(this.pizzas);
+    if (this.pizzas.length > 0) {
+      this.subtotal = this.subtotal - 9.99;
+      this.total();
+    }
+    else {
+      this.subtotal = 0;
+      this.table = false;
+    }
+    
+  }
+
 
   note: string = "";
   async placeOrder() {
     let user: User = await this.userService.getUserByUserId(1);
     var d = new Date();
-    let ticket: Ticket = new Ticket(0, user, "date", "Submitted", this.note);
+    let ticket: Ticket = new Ticket(0, user, d, "Submitted", this.note);
     let ticketPromise: Ticket = await this.ticketService.createTicket(ticket);
-    console.log(ticketPromise);
-    let createPizza: Pizza = new Pizza(0, ticketPromise, this.toppingSelected);
-    console.log(createPizza);
-    let pizzaPromise: Pizza = await this.pizzaService.createPizza(createPizza);
-    console.log(pizzaPromise);
+    
+    for(let i=0;i<this.pizzas.length; i++){
+      let createPizza: Pizza = new Pizza(0, ticketPromise, this.pizzas[i].topping);
+      let pizzaPromise: Pizza = await this.pizzaService.createPizza(createPizza);
+      console.log(pizzaPromise);
+    }
+    this.table=false;
+
   }
 }

@@ -13,8 +13,7 @@ export class UserService {
   userInfo:User;
 
   async loginUser(username:string, password:string):Promise<any>{
-    let userRole:UserRole = new UserRole(1, "Employee")
-    let user:User = new User(999, username, password, userRole );
+    let user:User = new User();
     user.userId = 999;    //DUMMY
     user.userName = username;
     user.password = password;
@@ -29,15 +28,24 @@ export class UserService {
     let usersPromise:Promise<any> = this.http.get(`http://localhost:9000/users`).toPromise();
     return usersPromise;
   }
+  
+   async createUser(username:string, password:string):Promise<any>{
+    let userRole:UserRole = new UserRole(6, "Customer");
+
+    let user:User = new User();
+    user.userId = 0;    //DUMMY
+    user.userName = username;
+    user.password = password;
+    user.userRole = userRole;
+    user.tickets = null;  //DUMMY
+
+    let userPromise = this.http.post("http://localhost:9000/users", user).toPromise();
+    return userPromise;
+  }
 
   getUserByUserId(userId:number):Promise<any>{
     let userById:Promise<any> = this.http.get(`http://localhost:9000/users/${userId}`).toPromise();
     return userById;
-  }
-
-  getUserByUserName(userName:string):Promise<any>{
-    let userByUserName:Promise<any> = this.http.get(`http://localhost:9000/users/${userName}`).toPromise();
-    return userByUserName;
   }
 
 }

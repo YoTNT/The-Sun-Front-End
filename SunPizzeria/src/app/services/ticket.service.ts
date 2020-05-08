@@ -1,15 +1,52 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Ticket } from '../models/Ticket';
+import { promise } from 'protractor';
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class TicketService {
 
-  constructor(private http:HttpClient) { }
+  ticketlist: Array<Ticket>;
+  ticket: Ticket;
+  constructor(private httprequest: HttpClient) { }
 
+  async registredUserTickets(userid: number): Promise<Array<Ticket>> {
+
+    let response: Promise<any> = this.httprequest.get('http://localhost:9000/tickets/usertickets/' + userid).toPromise();
+ 
+    return response;
+
+
+  }
   async createTicket(ticket:Ticket):Promise<any>{
-    let ticketPromise =  await this.http.post("http://localhost:9000/tickets", ticket).toPromise();
+    let ticketPromise =  await this.httprequest.post("http://localhost:9000/tickets", ticket).toPromise();
     return ticketPromise;
   }
+
+
+  async function (userid: number) {
+    let response = await fetch('http://localhost:9000/tickets/usertickets/' + userid)
+    if (response.ok) {
+        let body = await response.text();
+        //alert(body);
+        let jsn = JSON.parse(body);
+        //    alert(jsn);
+       
+     
+       
+    }
+  
+}
+
+
+
+
+
+
+
+
+
 }
