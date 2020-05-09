@@ -132,7 +132,8 @@ export class PizzaComponent implements OnInit {
 
   note: string = "";
   async placeOrder() {
-    let user: User = await this.userService.getUserByUserId(1);
+    // let user: User = await this.userService.getUserByUserId(1); // Nirav's testing code
+    let user:User = this.userService.userInfo;  // Access the current user information model object
     var d = new Date();
     let ticket: Ticket = new Ticket(0, user, d, "Submitted", this.note);
     let ticketPromise: Ticket = await this.ticketService.createTicket(ticket);
