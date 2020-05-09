@@ -54,8 +54,9 @@ export class LoginComponent implements OnInit {
     return this.user;
   }
 
-  async getAllUsersInfo():Promise<any>{
-    this.users = await this.userservice.getAllUsers();
-    console.log(this.users);
-  }
+  // This method will not be used by user
+  // async getAllUsersInfo():Promise<any>{
+  //   this.users = await this.userservice.getAllUsers();
+  //   console.log(this.users);
+  // }
 }
