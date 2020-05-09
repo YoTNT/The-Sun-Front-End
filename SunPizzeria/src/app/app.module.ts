@@ -8,7 +8,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 import { Routes, RouterModule, ROUTES } from '@angular/router';
 import { MatToolbarModule } from  '@angular/material/toolbar';
-import {MatListModule} from '@angular/material/list'
+import {MatListModule} from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog'
 
 import { ReactiveFormsModule} from '@angular/forms';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -77,7 +78,8 @@ import { TimestampPipe } from './pipes/timestamp.pipe';
     MatInputModule,
     MatIconModule,
     MatListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
