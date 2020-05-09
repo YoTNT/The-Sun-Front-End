@@ -1,6 +1,6 @@
 <h1>Register New User</h1>
 
-<div class="container">
+<div class="container" id="registerSession">
            
         <label for="loginUsername">Create your User Name</label>
         <input id="name" class="form-control" type="text" required minlength="6" [(ngModel)]="username" placeholder="User Name" #name="ngModel">
@@ -60,6 +60,8 @@
         <br>
         <br>
         {{msg}}
+        <br>
+        <p>Already have an account? Please <a routerLink="/login" routerLinkActive="active">Login from here</a>.</p>
         <!-- <button (click)="getAllUsersInfo()">Get All Users</button> -->
 
         
