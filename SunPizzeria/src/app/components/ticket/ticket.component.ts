@@ -6,8 +6,8 @@ import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-tickets',
-  templateUrl: './tickets.component.html',
-  styleUrls: ['./tickets.component.css']
+  templateUrl: './ticket.component.html',
+  styleUrls: ['./ticket.component.css']
 })
 export class TicketsComponent implements OnInit {
 
