@@ -11,8 +11,8 @@
       <a mat-button [routerLink]="'/about'"> About </a>
       <a mat-button [routerLink]="'/gallery'"> Gallery </a>
       <a mat-button [routerLink]="'/contact'"> Contact Us </a>
-      <a mat-button [routerLink]="'/login'"> Login </a>
-      <a mat-button [routerLink]="'/logout'"> Logout </a>
+      <a mat-button [routerLink]="'/login'" *ngIf = 'showLoginNav'> Login </a>
+      <a mat-button [routerLink]="'/logout'" *ngIf = 'showLogoutNav'> Logout </a>
 
     </div>
   </mat-toolbar-row>

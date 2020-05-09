@@ -34,6 +34,11 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['employee']);
   }
 
+  loginModeForNav(){
+    this.userservice.showLogin = false;
+    this.userservice.showLogout = true;
+  }
+
   async login():Promise<User>{
     this.user = await this.userservice.loginUser(this.username, this.password);
     console.log(this.user);

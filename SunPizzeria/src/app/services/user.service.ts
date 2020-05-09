@@ -11,6 +11,8 @@ export class UserService {
   constructor(private http:HttpClient) { }
 
   userInfo:User;
+  showLogin:boolean = true;
+  showLogout:boolean = false;
 
   async loginUser(username:string, password:string):Promise<any>{
     let user:User = new User();
