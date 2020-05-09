@@ -11,6 +11,8 @@ export class UserService {
   constructor(private http:HttpClient) { }
 
   userInfo:User;
+  showLogin:boolean = true;
+  showLogout:boolean = false;
 
   async loginUser(username:string, password:string):Promise<any>{
     let user:User = new User();
@@ -41,6 +43,11 @@ export class UserService {
 
     let userPromise = this.http.post("http://localhost:9000/users", user).toPromise();
     return userPromise;
+  }
+
+  getUserByUserId(userId:number):Promise<any>{
+    let userById:Promise<any> = this.http.get(`http://localhost:9000/users/${userId}`).toPromise();
+    return userById;
   }
 
 }

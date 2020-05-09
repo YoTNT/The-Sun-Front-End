@@ -21,7 +21,10 @@ export class TicketService {
 
 
   }
-
+  async createTicket(ticket:Ticket):Promise<any>{
+    let ticketPromise =  await this.httprequest.post("http://localhost:9000/tickets", ticket).toPromise();
+    return ticketPromise;
+  }
 
 
   async function (userid: number) {

@@ -15,3 +15,4 @@ export class TicketitemComponent implements OnInit {
   }
 
 }
+

@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1>Sun Pizzeria</h1>
+    <span class="menu-spacer"></span>
+    <div >
+      <a mat-button [routerLink]="'/home'"> Home </a>
+      <a mat-button [routerLink]="'/order'"> Order </a>
+      <a mat-button [routerLink]="'/about'"> About </a>
+      <a mat-button [routerLink]="'/gallery'"> Gallery </a>
+      <a mat-button [routerLink]="'/contact'"> Contact Us </a>
+      <a mat-button [routerLink]="'/login'" *ngIf = 'showLoginNav'> Login </a>
+      <a mat-button [routerLink]="'/logout'" *ngIf = 'showLogoutNav'> Logout </a>
+
+    </div>
+  </mat-toolbar-row>
+
+  <!-- <mat-toolbar-row>
+      <span style="font-size: 12px;">SimpleCRM helps you easily manage your contacts</span>
+    </mat-toolbar-row> -->
+</mat-toolbar>
