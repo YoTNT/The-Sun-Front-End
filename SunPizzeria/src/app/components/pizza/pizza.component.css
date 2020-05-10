@@ -1,0 +1,42 @@
+
+.table td,
+        th ,tr{
+            text-align: left;
+        }
+
+        .max-width {
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .dark-modal .modal-content {
+            background-color: #292b2c;
+            color: white;
+          }
+          .dark-modal .close {
+            color: white;
+          }
+          .light-blue-backdrop {
+            background-color: #5cb3fd;
+          }
+
+          /* .example-container {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+          } */
+
+          .example-container {
+            position: absolute;
+
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+          }
+          .note-form-field {
+            width: 200px;
+          }
