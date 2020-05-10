@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
       console.log("Welcome back customer, " + this.user.userName);
       this.userservice.userInfo = this.user;
       this.redirectToCustomer();
+      this.userservice.isCustomer = true;
 
       this.close.emit(null);
     }
@@ -57,6 +58,7 @@ export class LoginComponent implements OnInit {
       console.log("Welcome back employee, " + this.user.userName);
       this.userservice.userInfo = this.user;
       this.redirectToEmployee();
+      this.userservice.isCustomer = false;
     }
 
     return this.user;

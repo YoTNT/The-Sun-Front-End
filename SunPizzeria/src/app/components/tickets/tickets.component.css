@@ -16,7 +16,7 @@
     /* Firefox */
     column-count: 3;
     flex: 1 1 0px;
-    border: 1px solid black;
+    border: 1px solid darksalmon;
     max-width: 33%;
 }
 
@@ -25,15 +25,19 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
+    border-color: darksalmon;
   }
   /* Column Gap */
   .cardList > * {
     box-sizing: border-box;
+    border-color: darksalmon;
   }
   .cardList > *:not(:last-child) {
     margin-right: 32px;
+    border-color: darksalmon;
   }
   /* Item sizing */
   .cardListItem {
     flex: 0 1 calc(33.3% - 32px);
+    border-color: darksalmon;
   }
