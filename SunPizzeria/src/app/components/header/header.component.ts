@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+// import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -17,6 +18,8 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // const source = interval(2000);
+    // const subscribe = source.subscribe(val => console.log(val));
   }
 
 }

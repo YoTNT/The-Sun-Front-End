@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
     private router:Router,
     ) { };
 
+  prompt:string = "";
   user:User;
   username:string;
   password:string;
@@ -40,7 +41,9 @@ export class LoginComponent implements OnInit {
   }
 
   async login():Promise<User>{
+    try{
     this.user = await this.userservice.loginUser(this.username, this.password);
+
     console.log(this.user);
 
     if(this.user.userRole.roleId == 6){
@@ -57,6 +60,11 @@ export class LoginComponent implements OnInit {
     }
 
     return this.user;
+    }
+    catch (Error){
+      this.prompt = "The username and password does not match!";
+      return null;
+    }
   }
 
   async getAllUsersInfo():Promise<any>{
