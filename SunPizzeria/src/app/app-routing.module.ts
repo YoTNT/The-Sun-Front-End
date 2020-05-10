@@ -21,6 +21,7 @@ const routes: Routes = [
   {path: "employee", component:EmployeeComponent},
   {path: "registeruser", component:RegisterComponent},
   {path: "home", component:HomeComponent},
+  {path: "", component:HomeComponent}
 ];
 
 @NgModule({
