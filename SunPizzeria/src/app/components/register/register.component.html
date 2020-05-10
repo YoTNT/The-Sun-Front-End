@@ -21,7 +21,7 @@
         </div>
 
         <label for="loginPasword">Create your Password</label>
-        <input id="pass" class="form-control" type="text" required minlength="6" [(ngModel)]="newpassword" placeholder="Password(Minimum 6 characters)" #pass="ngModel">
+        <input id="pass" class="form-control" type="password" required minlength="6" [(ngModel)]="newpassword" placeholder="Password(Minimum 6 characters)" #pass="ngModel">
         <br>
         <div *ngIf="pass.invalid && (pass.dirty || pass.touched)"
         class="alert alert-danger">
@@ -40,7 +40,7 @@
         </div>
 
         <label for="loginPasword">Confirm your Password</label>
-        <input id="conpass" class="form-control" type="text" required minlength="6" [(ngModel)]="confirmpassword" placeholder="Password" #conpass="ngModel">
+        <input id="conpass" class="form-control" type="password" required minlength="6" [(ngModel)]="confirmpassword" placeholder="Password" #conpass="ngModel">
         <br>
         <div *ngIf="conpass.invalid && (conpass.dirty || conpass.touched)"
         class="alert alert-danger">

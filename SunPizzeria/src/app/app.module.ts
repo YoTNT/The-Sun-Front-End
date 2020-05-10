@@ -6,21 +6,22 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
-import { Routes, RouterModule, ROUTES } from '@angular/router';
-import { MatToolbarModule } from  '@angular/material/toolbar';
+import {Routes, RouterModule, ROUTES } from '@angular/router';
+import {MatToolbarModule } from  '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
-import { MatDialogModule } from '@angular/material/dialog'
+import {MatDialogModule } from '@angular/material/dialog'
 
-import { ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule, MatInput} from '@angular/material/input';
 import { NgbModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PizzaComponent } from './components/pizza/pizza.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TicketsComponent } from './components/ticket/ticket.component';
+import { TicketsComponent } from './components/tickets/tickets.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -35,8 +36,11 @@ import { TicketitemComponent } from './components/ticketitem/ticketitem.componen
 import { ToppingComponent } from './components/topping/topping.component';
 import { UserComponent } from './components/user/user.component';
 import { UserRoleComponent } from './components/user-role/user-role.component';
-import { CurrencyPipe } from './pipes/currency.pipe';
 import { TimestampPipe } from './pipes/timestamp.pipe';
+import { EvenoddPipe } from './pipes/evenodd.pipe';
+import { ModalComponent } from './components/modal/modal.component';
+import { APP_BASE_HREF } from '@angular/common';
+
 
 
 @NgModule({
@@ -55,11 +59,15 @@ import { TimestampPipe } from './pipes/timestamp.pipe';
     LoginComponent,
     RegisterComponent,
     TicketitemComponent,
+	UserComponent,			  
     ToppingComponent,
     UserComponent,
     UserRoleComponent,
-    CurrencyPipe,
-    TimestampPipe,
+    TimestampPipe,					
+	EvenoddPipe,
+    ModalComponent,
+    FooterComponent,
+    ContactComponent,	
   ],
   imports: [
     BrowserModule,
@@ -81,7 +89,7 @@ import { TimestampPipe } from './pipes/timestamp.pipe';
     MatToolbarModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [{ provide: APP_BASE_HREF, useValue: '' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
