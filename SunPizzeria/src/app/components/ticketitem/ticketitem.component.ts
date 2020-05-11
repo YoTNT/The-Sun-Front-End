@@ -112,6 +112,7 @@ export class TicketitemComponent implements OnInit {
   }
 
   closeModal() {
+    this.isVisable = !this.isVisable;
     this.modalService.close(this.ticket.ticketId + '');
   }
   // logDropdown(id: number): void {
