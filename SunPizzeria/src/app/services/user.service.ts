@@ -15,6 +15,12 @@ export class UserService {
   showLogin:boolean = true;
   showLogout:boolean = false;
 
+  showHome:boolean = true;
+  showOrder:boolean = true;
+  showAbout:boolean = true;
+  showGallery:boolean = true;
+  showContact:boolean = true;
+
   async loginUser(username:string, password:string):Promise<any>{
     let user:User = new User();
     user.userId = 999;    //DUMMY
