@@ -76,8 +76,8 @@
 
          <div class="">
             <b> Status: </b> <!--    set  IsEmployee=true to show the Status {{dropdownlist}}  , and false to hide it -->
-            <select #ddlstatus [(ngModel)]="ticket.status" [class.txtareaactive]=!isCustomer
-               [class.txtareaInactive]="(isCustomer)">
+            <select #ddlstatus [(ngModel)]="ticket.status" 
+               [class.txtareaInactive]="(isCustomer ||  isVisable) " [class.txtareaactive]="(!isCustomer && !isVisable)" >
                <option *ngFor="let st of Statuslist" [value]="st.id">{{st.status}}</option>
             </select>
          </div>

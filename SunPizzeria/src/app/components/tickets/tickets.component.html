@@ -31,7 +31,7 @@
             <ng-template #TableView>
                 <div class=" " *ngFor="let tic of filterList">
                     <app-ticketitem class=" " [ticket]='tic' [Layout]=SelectedView [LayoutContainer]="'rows'"
-                        [LayoutItem]="'columns'" [IsEmployee]='true'>
+                        [LayoutItem]="'columns'">
                     </app-ticketitem>
                 </div>
             </ng-template>
@@ -41,7 +41,7 @@
                     <div class="cardList">
                         <ng-container *ngFor="let tic of filterList">
                             <app-ticketitem class="cardListItem" [ticket]='tic' [Layout]=SelectedView
-                                [LayoutContainer]="''" [LayoutItem]="'columns '" [IsEmployee]='false'></app-ticketitem>
+                                [LayoutContainer]="''" [LayoutItem]="'columns '"></app-ticketitem>
                         </ng-container>
                     </div>
                 </div>
