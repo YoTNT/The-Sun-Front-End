@@ -11,6 +11,7 @@ export class UserService {
   constructor(private http:HttpClient) { }
 
   userInfo:User;
+  isCustomer:boolean;
   showLogin:boolean = true;
   showLogout:boolean = false;
 

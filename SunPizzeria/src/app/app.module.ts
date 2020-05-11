@@ -21,7 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PizzaComponent } from './components/pizza/pizza.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TicketsComponent } from './components/ticket/ticket.component';
+import { TicketsComponent } from './components/tickets/tickets.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ContactComponent } from './components/contact/contact.component';
