@@ -38,6 +38,12 @@ export class LoginComponent implements OnInit {
   loginModeForNav(){
     this.userservice.showLogin = false;
     this.userservice.showLogout = true;
+    
+    this.userservice.showHome = false;
+    this.userservice.showOrder = false;
+    this.userservice.showAbout = false;
+    this.userservice.showGallery = false;
+    this.userservice.showContact = false;
   }
 
   async login():Promise<User>{
@@ -49,16 +55,18 @@ export class LoginComponent implements OnInit {
     if(this.user.userRole.roleId == 6){
       console.log("Welcome back customer, " + this.user.userName);
       this.userservice.userInfo = this.user;
-      this.redirectToCustomer();
       this.userservice.isCustomer = true;
+      this.loginModeForNav();
+      this.redirectToCustomer();
 
       this.close.emit(null);
     }
     if(this.user.userRole.roleId == 1){
       console.log("Welcome back employee, " + this.user.userName);
       this.userservice.userInfo = this.user;
-      this.redirectToEmployee();
       this.userservice.isCustomer = false;
+      this.loginModeForNav();
+      this.redirectToEmployee();
     }
 
     return this.user;
