@@ -14,7 +14,15 @@ export class TicketService {
   ticketlist: Array<Ticket>;
   ticket: Ticket;
   constructor(private httprequest: HttpClient) { }
+  // get all tcikets by user id 
+  async getAllTickets(): Promise<Array<Ticket>> {
 
+    let response: Promise<any> = this.httprequest.get('http://localhost:9000/tickets').toPromise();
+
+    return response;
+
+
+  }
   // get all tcikets by user id 
   async registredUserTickets(userid: number): Promise<Array<Ticket>> {
 
@@ -68,12 +76,5 @@ export class TicketService {
     }
 
   }
-
-
-
-
-
-
-
 
 }

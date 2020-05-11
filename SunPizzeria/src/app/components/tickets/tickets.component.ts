@@ -28,23 +28,28 @@ export class TicketsComponent implements OnInit {
     { id: 'OutForDelivery', status: 'Out For Delivery' },
     { id: 'Delivered', status: 'Delivered' }
   ];
-
-
-
-
   constructor(private ticketServ: TicketService, private userServ: UserService) {
-    this.getUserTicketsbyStatus();
+
     this.user = userServ.userInfo;
-  
+    this.getUserTickets();
+    
+
   }
 
   ngOnInit(): void {
-    this.getUserTickets();
-
+ 
+this.getUserTicketsbyStatus();
   }
   async getUserTickets(): Promise<Array<Ticket>> {
-    this.tickets = await this.ticketServ.registredUserTickets(this.user.userId);
 
+    if (this.userServ.isCustomer) {
+      this.tickets = await this.ticketServ.registredUserTickets(this.user.userId);
+    }
+    else if (!this.userServ.isCustomer) {
+      this.tickets = await this.ticketServ.getAllTickets();
+    }
+
+    // this.tickets = await this.ticketServ.registredUserTickets(this.user.userId);
     return this.tickets;
 
   }
@@ -61,7 +66,7 @@ export class TicketsComponent implements OnInit {
 
     }
     else {
-      this.tickets = await this.ticketServ.registredUserTickets(3);
+      this.tickets = await this.getUserTickets();
       this.filterList = this.tickets.filter((t => {
         if (this.SelectedStatus == "All")
           return this.tickets;
@@ -79,4 +84,3 @@ export class TicketsComponent implements OnInit {
   }
 
 }
-
