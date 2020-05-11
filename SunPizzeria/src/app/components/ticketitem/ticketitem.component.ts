@@ -4,6 +4,7 @@ import { ModalService } from 'src/app/services/modal.service';
 import { Pizza } from 'src/app/models/Pizza';
 import { TicketService } from 'src/app/services/ticket.service';
 import { Topping } from 'src/app/models/Topping';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { Topping } from 'src/app/models/Topping';
   styleUrls: ['./ticketitem.component.css']
 })
 export class TicketitemComponent implements OnInit {
+  isCustomer:boolean;
   @Input() public ticket: Ticket;
   @Input() totalprice: number = 0.00;
   @Input() toppingprice: number = 0.00;
@@ -25,7 +27,7 @@ export class TicketitemComponent implements OnInit {
   @Input() public Layout: any;
   @Input() public LayoutItem: any;
   public updateResult: Number = 0;
-  @Input() public IsEmployee: boolean  ;
+  @Input() public : boolean  ;
   public isVisable: boolean = true;
   public ticketstatus: any;
   Statuslist: any = [
@@ -37,10 +39,10 @@ export class TicketitemComponent implements OnInit {
   ];
 
 
-  constructor(private modalService: ModalService, private ticketServ: TicketService) { }
+  constructor(private modalService: ModalService, private ticketServ: TicketService, private userServ: UserService) { }
   ngOnInit(): void {
     this.getTicketDetailsById();
-
+    this.isCustomer = this.userServ.isCustomer;
   }
   editMode() {
     this.isVisable = !this.isVisable;

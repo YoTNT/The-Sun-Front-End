@@ -25,7 +25,11 @@
   color: rgba(240, 132, 38, 0.918);
   cursor: pointer;
 }
-
+a:not([href]) {
+  /* Styles for anchors without href */
+  cursor: pointer;
+  color: rgba(240, 132, 38, 0.918); ;
+}
 .txtareaInactive {
   background-color:inherit;
   overflow: hidden;

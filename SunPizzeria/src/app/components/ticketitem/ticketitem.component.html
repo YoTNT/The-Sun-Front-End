@@ -24,7 +24,7 @@
       <div class="{{LayoutItem}}">
          <b> Ticket Number# {{ ticket.ticketId}} </b>
 
-         <b *ngIf="Layout== 2" style=" position:sticky;left:80%; "> <a id="lnk{{ ticket.ticketId}}" href="#"
+         <b *ngIf="Layout== 2" style=" position:sticky;left:80%; "> <a id="lnk{{ ticket.ticketId}}"  
                (click)="openModal()"> Details
             </a> </b>
 
@@ -43,7 +43,7 @@
       <div class="{{LayoutItem}}" >
 
 
-         <b *ngIf="Layout == 1" style=" position:static;  "> <a id="lnk{{ ticket.ticketId}}" href="#"
+         <b *ngIf="Layout == 1" style=" position:static;  "> <a id="lnk{{ ticket.ticketId}}" 
                (click)="openModal()"> Details
             </a> </b>
       </div>
@@ -58,14 +58,14 @@
 
          <div class="">
             <b> Time: </b> {{ ticket.placementTime|dateTimeFormat}}
-            <b style=" position:sticky;left:80%; "> <a #btnEdit *ngIf="isVisable" href="#" (click)="editMode()"> Edit
+            <b style=" position:sticky;left:80%; "> <a #btnEdit *ngIf="isVisable"  (click)="editMode()"> Edit
                </a> </b>
 
-            <b style=" position:sticky;left:77%; "> <a #btnCancel *ngIf="!isVisable" href="#"
+            <b style=" position:sticky;left:77%; "> <a #btnCancel *ngIf="!isVisable"  
                   (click)="viewMode(ticket.note,ticket.status)">
                   Cancel
                </a> </b>
-            <b style=" position:sticky;left:70%; "> <a #btnSave *ngIf="!isVisable" href="#"
+            <b style=" position:sticky;left:70%; "> <a #btnSave *ngIf="!isVisable" 
                   (click)="updateTicket(ticket)">
                   Save
                </a> </b>
@@ -75,9 +75,9 @@
          </div>
 
          <div class="">
-            <b> Status: </b> <!--    set  IsEmployee=true to show the Status dropdownlist  , and false to hide it -->
-            <select #ddlstatus [(ngModel)]="ticket.status" [class.txtareaactive]="(IsEmployee)"
-               [class.txtareaInactive]="(!IsEmployee)">
+            <b> Status: </b> <!--    set  IsEmployee=true to show the Status {{dropdownlist}}  , and false to hide it -->
+            <select #ddlstatus [(ngModel)]="ticket.status" [class.txtareaactive]=!isCustomer
+               [class.txtareaInactive]="(isCustomer)">
                <option *ngFor="let st of Statuslist" [value]="st.id">{{st.status}}</option>
             </select>
          </div>
