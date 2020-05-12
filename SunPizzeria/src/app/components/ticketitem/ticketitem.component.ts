@@ -13,10 +13,10 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./ticketitem.component.css']
 })
 export class TicketitemComponent implements OnInit {
-  isCustomer:boolean;
+  isCustomer: boolean;
   @Input() public ticket: Ticket;
-  @Input() totalprice: number = 0.00;
-  @Input() toppingprice: number = 0.00;
+  totalprice: number = 0.00;
+  toppingprice: number = 0.00;
   pizzas: Array<Pizza>;
   @ViewChild("txtnotes1") txtnotes1: ElementRef;
   @ViewChild("btnEdit") btnEdit: ElementRef;
@@ -27,7 +27,7 @@ export class TicketitemComponent implements OnInit {
   @Input() public Layout: any;
   @Input() public LayoutItem: any;
   public updateResult: Number = 0;
-  @Input() public : boolean  ;
+  @Input() public: boolean;
   public isVisable: boolean = true;
   public ticketstatus: any;
   Statuslist: any = [
@@ -54,14 +54,14 @@ export class TicketitemComponent implements OnInit {
     this.isVisable = !this.isVisable;
     this.ticketstatus = ""; this.textValue = "";
     // this.txtnotes1.nativeElement.class = "txtareaInactive";
-   
+
   }
 
   ngDoCheck(): void {
 
   }
   async getTicketDetailsById(): Promise<Array<Pizza>> {
-    console.log(this.ticket.ticketId);
+    // console.log(this.ticket.ticketId);
     this.pizzas = await this.ticketServ.getTicketDetailsById(this.ticket.ticketId);
 
     this.totalprice = this.sumtotal();
@@ -70,7 +70,7 @@ export class TicketitemComponent implements OnInit {
   }
   async updateTicket(ticket: Ticket) {
     this.isVisable = !this.isVisable;
-    console.log("updated tciket object is: " + JSON.stringify(ticket));
+    // console.log("updated tciket object is: " + JSON.stringify(ticket));
     this.updateResult = await this.ticketServ.updateTicket(ticket);
     // console.log("resut is :"  + this.updateResult );
   }
@@ -112,6 +112,7 @@ export class TicketitemComponent implements OnInit {
   }
 
   closeModal() {
+    this.isVisable = !this.isVisable;
     this.modalService.close(this.ticket.ticketId + '');
   }
   // logDropdown(id: number): void {

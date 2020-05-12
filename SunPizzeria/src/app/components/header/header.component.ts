@@ -12,9 +12,21 @@ export class HeaderComponent implements OnInit {
   showLoginNav:boolean;
   showLogoutNav:boolean;
 
+  showHomeNav:boolean;
+  showOrderNav:boolean;
+  showAboutNav:boolean;
+  showGalleryNav:boolean;
+  showContactNav:boolean;
+
   constructor(private userservice:UserService) { 
     this.showLoginNav = userservice.showLogin;
     this.showLogoutNav = userservice.showLogout;
+
+    this.showHomeNav = userservice.showHome;
+    this.showOrderNav = userservice.showOrder;
+    this.showAboutNav = userservice.showAbout;
+    this.showGalleryNav = userservice.showGallery;
+    this.showContactNav = userservice.showContact;
   }
 
   ngOnInit(): void {
