@@ -24,15 +24,22 @@ export class PizzaComponent implements OnInit {
 
   screenHeight = window.innerHeight;
   // constructor() { }
+  public user: User = new User();
+  logined: boolean = false;
+ 
   myForm: any;
   ngOnInit(): void {
+
   }
 
   closeResult: string;
 
-  constructor(private modalService: NgbModal, private toppingService: ToppingService, 
-    private formBuilder: FormBuilder, private ticketService: TicketService, private pizzaService: PizzaService, 
-    private userService: UserService) { }
+  constructor(private modalService: NgbModal, private toppingService: ToppingService,
+    private formBuilder: FormBuilder, private ticketService: TicketService, private pizzaService: PizzaService,
+    private userService: UserService) {
+    if (userService.userInfo != null && userService.userInfo.userId > 1)
+      this.logined = true;
+  }
   // toppings:Array<Topping>;
   toppings: Array<Topping>;
   openVerticallyCentered(content) {
@@ -108,13 +115,13 @@ export class PizzaComponent implements OnInit {
     }
     this.totalMoney = this.subtotal + ztoppingcost;
     this.withTax = ((ztoppingcost + this.subtotal) * .0875) + (ztoppingcost + this.subtotal)
-   
+
     this.toppingCost = ztoppingcost;
   }
 
-  
+
   removePizza(i: number) {
-    
+
     this.pizzas.splice(i, 1);
     console.log(this.pizzas);
     if (this.pizzas.length > 0) {
@@ -125,23 +132,29 @@ export class PizzaComponent implements OnInit {
       this.subtotal = 0;
       this.table = false;
     }
-    
+
   }
 
 
   note: string = "";
   async placeOrder() {
-    let user: User = await this.userService.getUserByUserId(1);
+
+    if (this.userService.userInfo != null && this.userService.userInfo.userId > 0) {
+      this.user = this.userService.userInfo;
+    }
+    else {
+      this.user = await this.userService.getUserByUserId(1);
+    }
     var d = new Date();
-    let ticket: Ticket = new Ticket(0, user, d, "Submitted", this.note);
+    let ticket: Ticket = new Ticket(0, this.user, d, "Submitted", this.note);
     let ticketPromise: Ticket = await this.ticketService.createTicket(ticket);
-    
-    for(let i=0;i<this.pizzas.length; i++){
+
+    for (let i = 0; i < this.pizzas.length; i++) {
       let createPizza: Pizza = new Pizza(0, ticketPromise, this.pizzas[i].topping);
       let pizzaPromise: Pizza = await this.pizzaService.createPizza(createPizza);
       console.log(pizzaPromise);
     }
-    this.table=false;
+    this.table = false;
 
   }
 }
